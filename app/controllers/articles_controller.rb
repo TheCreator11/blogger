@@ -18,5 +18,17 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+    flash.notice = "The Destroyer"
+  end
+  def edit
+    @article = Article.find(params[:id])
+
+  end
+  def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to articles_path(@article)
+    flash.notice = "Article '#{@article.title}' Updated!"
+
   end
 end
